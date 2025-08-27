@@ -1,3 +1,5 @@
+/* src/App.css */
+
 /* 基本的なリセットと背景設定 */
 body {
   margin: 0;
@@ -6,59 +8,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #242424;
-  color: rgba(255, 255, 255, 0.87);
+  background-color: #ffffff; /* 全体の背景色: 明るいオフホワイト */
+  color: #242424; /* 全体の文字色: ダークグレー */
 }
 
 #root {
-  max-width: 1280px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
-}
-
-/* 各画面共通のコンテナ */
-.screen-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh;
-}
-
-/* タイトル文字のスタイル */
-.title {
-  font-size: 4em;
-  font-weight: bold;
-  margin-bottom: 2rem;
-  background: -webkit-linear-gradient(45deg, #a2facf, #6495ed);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* ボタンコンテナのスタイル */
-.button-container {
-  display: flex;
-  gap: 1.5rem; /* ボタン間のスペース */
-}
-
-/* ボタンのスタイル */
-.button-link {
-  display: inline-block;
-  padding: 0.8rem 1.8rem;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  color: rgba(255, 255, 255, 0.87);
-  cursor: pointer;
-  transition: border-color 0.25s, background-color 0.25s;
-  text-decoration: none;
-}
-
-.button-link:hover {
-  border-color: #646cff;
-  background-color: #333;
 }
