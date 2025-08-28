@@ -1,26 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-// ファイル構造に合わせてCSSのインポートパスを修正
-import './startScreen.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./cssByScreen/startScreen.css";
+import "../App.css";
 
 const StartScreen: React.FC = () => {
-  return (
-    <div className="start-screen-container">
-      <h1 className="title">StyleBender</h1>
-      <div className="button-container">
-        <Link to="/card-view" className="nav-button">
-          カード選択へ
-        </Link>
-        <Link to="/stage-select" className="nav-button">
-          ステージ選択へ
-        </Link>
-        {/* ↓↓↓ ここを追記 ↓↓↓ */}
-        <Link to="/game" className="nav-button">
-          ゲーム開始
-        </Link>
-      </div>
-    </div>
-  );
+    return (
+        <>
+            <h1 className="title">Style Bender</h1>
+            <div className="operation">
+                <Link to="/card-view" className="content">
+                    <button className="card">カード</button>
+                    <p className="card-hover-text">
+                        カード一覧を見ることができます
+                    </p>
+                </Link>
+                <Link to="/StageSelect" className="content">
+                    <button className="card">ステージ</button>
+                    <p className="card-hover-text">
+                        ステージ一覧を見ることができます
+                    </p>
+                </Link>
+            </div>
+        </>
+    );
 };
 
 export default StartScreen;
