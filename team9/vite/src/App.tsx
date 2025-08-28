@@ -8,7 +8,11 @@ function App() {
 
   return (
     <>
+<<<<<<< HEAD
       <div>
+=======
+      <div >
+>>>>>>> c0b139cb50e422796e88275b2ba42566475cbea5
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>

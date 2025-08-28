@@ -17,9 +17,18 @@ import styles from "./App.css";
 }
 
 body {
+<<<<<<< HEAD
     background-image: url("../../../public/background.png");
+=======
+    /* background-image: url("../../../public/background.png"); */
+>>>>>>> c0b139cb50e422796e88275b2ba42566475cbea5
     background-size: cover;
     background-position: center;
     width: 100%;
     height: 100vh;
+<<<<<<< HEAD
+=======
+  
+    color: #242424; /* 全体の文字色: ダークグレー */
+>>>>>>> c0b139cb50e422796e88275b2ba42566475cbea5
 }

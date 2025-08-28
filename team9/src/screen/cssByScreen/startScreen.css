@@ -17,6 +17,10 @@
     height: 100px;
     font-size: 32px;
     background-color: #c7e4fd;
+<<<<<<< HEAD
+=======
+    color: #242424; /* 全体の文字色: ダークグレー */
+>>>>>>> c0b139cb50e422796e88275b2ba42566475cbea5
 }
 
 .card:hover{
