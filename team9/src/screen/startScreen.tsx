@@ -1,18 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// startScreen.css をインポート
-import '../screen/startScreen.css'; // stylesディレクトリにcssを移動した場合
+// ファイル構造に合わせてCSSのインポートパスを修正
+import './startScreen.css';
 
 const StartScreen: React.FC = () => {
   return (
-    <div className="start-screen-container"> {/* クラス名を固有のものに変更 */}
+    <div className="start-screen-container">
       <h1 className="title">StyleBender</h1>
       <div className="button-container">
-        <Link to="/card-view" className="nav-button"> {/* classNameをnav-buttonに統一 */}
+        <Link to="/card-view" className="nav-button">
           カード選択へ
         </Link>
-        <Link to="/stage-select" className="nav-button"> {/* classNameをnav-buttonに統一 */}
+        <Link to="/stage-select" className="nav-button">
           ステージ選択へ
+        </Link>
+        {/* ↓↓↓ ここを追記 ↓↓↓ */}
+        <Link to="/game" className="nav-button">
+          ゲーム開始
         </Link>
       </div>
     </div>
