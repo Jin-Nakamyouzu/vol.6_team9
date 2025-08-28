@@ -1,5 +1,6 @@
 "use client";
-import TextCard from "../card/test"; // この import 文が1つだけであることを確認してください
+// 子コンポーネントである個々のカードをインポート
+import TextCard from "../card/test";
 import type { CSSProperties } from "react";
 
 // カード1枚のデータの型
@@ -10,17 +11,19 @@ type CardData = {
   bew: string ;
 }
 
-// CardsScreenが受け取るpropsの型
+// このコンポーネントが受け取るPropsの型
 type CardsScreenProps = {
     cards: CardData[];
     onCardApply: (css: CSSProperties) => void;
 }
 
+// カード置き場コンポーネント本体
 export default function CardsScreen({ cards, onCardApply }: CardsScreenProps){
     return (
+        // 複数の要素を返すためのReact.Fragment
         <>
             {
-                // cardの配列をmapで展開して、1枚ずつTextCardコンポーネントとして表示
+                // 親から渡されたcards配列をmap関数で展開し、1枚ずつTextCardコンポーネントとして表示
                 cards.map((card, index) => {
                     return (
                         <TextCard
@@ -28,7 +31,7 @@ export default function CardsScreen({ cards, onCardApply }: CardsScreenProps){
                             explain={card.explain}
                             code={card.code}
                             bew={card.bew}
-                            onCardApply={onCardApply} // クリック処理を子コンポーネントに渡す
+                            onCardApply={onCardApply} // クリックされた時の処理をそのまま子に渡す
                         />
                     );
                 })
