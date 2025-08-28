@@ -24,7 +24,10 @@ interface ElementsScreenProps {
 
 // 舞台コンポーネント本体
 export default function ElementsScreen({ blocks, groups, selectedBlockIds, onBlockClick }: ElementsScreenProps) {
+    console.log("blocks", blocks);
+    console.log("groups", groups)
     
+
     // --- 描画前の準備 ---
     // 現在グループ化されているブロックのIDを全てリストアップ
     const groupedBlockIds = groups.flatMap(group => group.blockIds);

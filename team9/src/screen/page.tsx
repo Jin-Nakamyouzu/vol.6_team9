@@ -7,14 +7,15 @@ import "./style.css";
 import { useStageStore } from "../lib/stageStore"; // ←ここ
 
 interface Block {
-  id: number;
-  content: string;
-}
-interface BlockGroup {
-  id: string;
-  blockIds: number[];
-  styles: CSSProperties;
-}
+    id: number;
+    content: string;
+  }
+  interface BlockGroup {
+    id: string;
+    blockIds: number[];
+    styles: CSSProperties;
+  }
+  
 
 export default function GameScreenHome() {
     // Zustandから取得
@@ -24,7 +25,7 @@ export default function GameScreenHome() {
     // useStateで初期値
     const [blocks, setBlocks] = useState(stageData.blocks);
     const [selectedBlockIds, setSelectedBlockIds] = useState<number[]>([]);
-    const [blockGroups, setBlockGroups] = useState([]);
+    const [blockGroups, setBlockGroups] = useState<BlockGroup[]>([]); // 型を明確化
 
     // ステージ切り替え時に初期化
     useEffect(() => {
@@ -43,39 +44,42 @@ export default function GameScreenHome() {
     };
 
     const handleCardApply = (css: CSSProperties) => {
-        if (selectedBlockIds.length > 0) {
-            // ブロックIDをソートしてグループ判定（順序の違いによる重複を防ぐ）
-            const sortedIds = [...selectedBlockIds].sort((a, b) => a - b);
+        if (selectedBlockIds.length === 0) return;
     
-            setBlockGroups(prevGroups => {
-                // 既存グループに同じIDセットがあるか判定
-                const idx = prevGroups.findIndex(
-                    group => 
-                        group.blockIds.length === sortedIds.length &&
-                        group.blockIds.every((id, i) => sortedIds[i] === id)
-                );
+        setBlockGroups(prevGroups => {
+            // 1. 今回選択されたブロックIDに接触する既存グループを全て見つける
+            const relevantGroups = prevGroups.filter(group =>
+                group.blockIds.some(id => selectedBlockIds.includes(id))
+            );
+            // 2. 接触しなかった、無関係なグループ
+            const unrelatedGroups = prevGroups.filter(group =>
+                !group.blockIds.some(id => selectedBlockIds.includes(id))
+            );
+
+            // 3. 接触したグループと、今回選択したブロックを全てマージして、
+            //    新しいブロックIDのリストを作成する (Setで重複を削除)
+            const allIdsToMerge = [
+                ...selectedBlockIds,
+                ...relevantGroups.flatMap(g => g.blockIds)
+            ];
+            const mergedBlockIds = [...new Set(allIdsToMerge)].sort((a, b) => a - b);
+
+            // 4. マージ後のスタイルを作成する
+            // 接触したグループがあればそのスタイルを引き継ぎ、新しいスタイルで上書きする
+            const baseStyles = relevantGroups.length > 0 ? relevantGroups[0].styles : {};
+            const mergedStyles = { ...baseStyles, ...css };
     
-                if (idx !== -1) {
-                    // 既存グループがあれば、そのCSSだけ書き換える
-                    const newGroups = [...prevGroups];
-                    newGroups[idx] = {
-                        ...newGroups[idx],
-                        styles: css,
-                    };
-                    return newGroups;
-                } else {
-                    // そうでない場合は新規追加
-                    return [
-                        ...prevGroups,
-                        {
-                            id: `group-${Date.now()}`,
-                            blockIds: sortedIds,
-                            styles: css,
-                        },
-                    ];
-                }
-            });
-        }
+            // 5. マージされた新しいグループを1つ作成
+            const mergedGroup: BlockGroup = {
+                id: `group-${Date.now()}`,
+                blockIds: mergedBlockIds,
+                styles: mergedStyles,
+            };
+
+            // 6. 無関係だったグループと、新しくマージしたグループを合わせて返す
+            return [...unrelatedGroups, mergedGroup];
+        })
+        setSelectedBlockIds([]);
     };
 
     const handleReset = () => {
