@@ -8,7 +8,7 @@
   min-height: 100vh;
   width: 100%;
   padding: 20px;
-  background-color: #f0f2f5; /* 背景色を少し変更 */
+  background-color: none; /* 背景色を少し変更 */
   color: #333;
   position: relative; /* 子要素の絶対配置の基準にする */
 }
@@ -55,7 +55,7 @@
 
 /* 個々のステージカードのスタイル */
 .stage-card {
-  background-color: #ffffff;
+  background-color: #8ac9a4;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   padding: 30px;
@@ -77,7 +77,7 @@
 
 .stage-card h2 {
   font-size: 2rem;
-  color: #4CAF50;
+  color: #ebe379;
   margin-bottom: 15px;
 }
 
@@ -90,7 +90,7 @@
 
 /* ステージカード内の開始ボタン */
 .start-stage-button {
-  background-color: #007bff;
+  background-color: #8ac9a4;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -98,11 +98,10 @@
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .start-stage-button:hover {
-  background-color: #0056b3;
+  background-color: #5ac988;
   transform: translateY(-1px);
 }
 
@@ -114,7 +113,7 @@
 
 /* グローバルなプライマリボタンのスタイル（App.cssから移動または調整） */
 .button-primary {
-  background-color: #4CAF50;
+  background-color: #ebe379;
   color: white;
   padding: 15px 30px; /* パディングを大きくする */
   border: none;
@@ -123,16 +122,14 @@
   font-size: 1.3rem; /* フォントサイズを大きくする */
   font-weight: bold; /* 太字 */
   transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* 影を強調 */
   text-decoration: none;
   display: inline-block;
   min-width: 250px; /* 最小幅をさらに大きくする */
 }
 
 .button-primary:hover {
-  background-color: #3e8e41;
+  background-color: #e6db48;
   transform: translateY(-4px); /* ホバー時の移動を強調 */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* ホバー時の影をさらに強調 */
 }
 
 /* レスポンシブデザインの調整 */

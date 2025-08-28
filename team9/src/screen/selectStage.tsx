@@ -14,14 +14,16 @@ const StageSelect: React.FC = () => {
             {/* 中央のステージ選択カードコンテナ */}
             <div className="stage-cards-wrapper">
                 <div className="stage-card">
-                    <h2>ステージ 1</h2>
-                    <p>最初のステージです。基本的な操作を学びましょう。</p>
-                    <button className="start-stage-button">開始</button>
+                    <button className="start-stage-button">
+                        <h2>Very Easy</h2>
+                        <p>最初のステージです。基本的な操作を学びましょう。</p>
+                    </button>
                 </div>
                 <div className="stage-card">
-                    <h2>ステージ 2</h2>
-                    <p>少し難しくなります。新しい要素が登場します。</p>
-                    <button className="start-stage-button">開始</button>
+                    <button className="start-stage-button">
+                        <h2>Monster</h2>
+                        <p>少し難しくなります。新しい要素が登場します。</p>
+                    </button>
                 </div>
                 {/* 必要に応じてステージカードを追加 */}
             </div>

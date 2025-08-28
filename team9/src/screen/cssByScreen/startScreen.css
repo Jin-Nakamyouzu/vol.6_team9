@@ -10,7 +10,7 @@
     align-items: center;
 }
 
-button{
+.card{
     border-radius: 7px;
     margin: 10px 20px;
     width: 300px;
