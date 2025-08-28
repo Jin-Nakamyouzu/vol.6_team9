@@ -48,30 +48,8 @@ export default function GameScreenHome(){
         });
     };
 
-    // カードがクリックされたときに実行される関数
     const handleCardApply = (css: CSSProperties) => {
-        // ブロックが何も選択されていなければ、何もしないで処理を終了
-        if (selectedBlockIds.length === 0) return;
-
-        // 選択されたブロックの中に、すでにグループ化されているものが含まれるかチェック
-        const groupToUpdate = blockGroups.find(g => 
-            g.blockIds.some(id => selectedBlockIds.includes(id))
-        );
-
-        if (groupToUpdate) {
-            // ケース1: 含まれていた場合、既存グループのスタイルを「更新」する
-            setBlockGroups(prevGroups => 
-                prevGroups.map(group => {
-                    // 更新対象のグループを見つけたら、スタイルを新しいものに置き換える
-                    if (group.id === groupToUpdate.id) {
-                        return { ...group, styles: css };
-                    }
-                    // それ以外のグループはそのまま返す
-                    return group;
-                })
-            );
-        } else {
-            // ケース2: 含まれていない場合、新しいグループを「作成」する
+        if (selectedBlockIds.length > 0) {
             const newGroup: BlockGroup = {
                 id: `group-${Date.now()}`,
                 blockIds: selectedBlockIds.sort(), // IDをソートして順序を固定
@@ -80,20 +58,17 @@ export default function GameScreenHome(){
             // グループリストの末尾に新しいグループを追加
             setBlockGroups(prevGroups => [...prevGroups, newGroup]);
         }
-        
-        // スタイルを適用したら、ブロックの選択状態はリセット
-        setSelectedBlockIds([]);
     };
 
-    // リセットボタンが押されたときに実行される関数
+    // ★ 1. リセット機能を追加
     const handleReset = () => {
-        setSelectedBlockIds([]); // 選択状態をリセット
-        setBlockGroups([]);      // グループを全てリセット
+        setSelectedBlockIds([]);
+        setBlockGroups([]);
     };
 
-    // 「一手戻る」ボタンが押されたときに実行される関数
+    // ★ 2. 一手戻る機能を追加
     const handleUndo = () => {
-        // グループが1つ以上存在する場合
+        // グループが存在する場合、最後のグループを削除する
         if (blockGroups.length > 0) {
             // リストの最後の要素（一番最近作ったグループ）を取り除いた新しいリストをセット
             setBlockGroups(prevGroups => prevGroups.slice(0, -1));
@@ -107,7 +82,7 @@ export default function GameScreenHome(){
         <div className="main">
             {/* 左側のプレイエリア */}
             <div className="left_menue">
-                {/* 操作ボタンエリア */}
+                {/* ★ 3. 操作ボタン用のコンテナを追加 */}
                 <div className="action-buttons-container">
                     <button onClick={handleUndo} className="action-button undo-button">一手戻る</button>
                     <button onClick={handleReset} className="action-button reset-button">リセット</button>
