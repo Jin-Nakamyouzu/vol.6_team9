@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./cssByScreen/selectStage.css"; // 新しいCSSファイルをインポート
+import "./cssByScreen/selectStage.css";
+import "../App.css";
 
 const StageSelect: React.FC = () => {
     return (

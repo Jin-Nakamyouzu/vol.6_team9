@@ -11,12 +11,9 @@ function App() {
                 {/* スタート画面をルートパスに設定 */}
                 <Route path="/" element={<StartScreen />} />
                 {/* カード選択画面のルートを設定 */}
-                <Route path="./screen/viewCards.tsx" element={<CardView />} />
+                <Route path="/CardView" element={<CardView />} />
                 {/* ステージ選択画面のルートを設定 */}
-                <Route
-                    path="./screen/selectStage.tsx"
-                    element={<StageSelect />}
-                />
+                <Route path="/StageSelect" element={<StageSelect />} />
             </Routes>
         </BrowserRouter>
     );
