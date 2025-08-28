@@ -39,6 +39,18 @@ export const useStageStore = create<StageStore>((set) => ({
         { explain: "横に並べる", code: { display: "flex", flexDirection: "row", gap: "10px" }, bew: "flex-direction: row;", isSelect: true },
       ],
     },
+        {
+      blocks: [
+        { id: 1, content: "Z" },
+        { id: 1, content: "Y" },
+        { id: 1, content: "X" },
+      ],
+      cards: [
+        { explain: "A", code: { display: "flex", scrollSnapType: "x mandatory", gap: "10px" }, bew: "scroll-snap-type: x mandatory;", isSelect: true },
+        { explain: "B", code: { display: "flex", overflowX: "scroll", gap: "10px" }, bew: "overflow-x: scroll;", isSelect: true },
+      ],
+    }
+
     // ...必要に応じてステージ追加
   ],
   setStage: (idx) => set({ currentStage: idx }),
