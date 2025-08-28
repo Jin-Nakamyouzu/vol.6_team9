@@ -1,3 +1,5 @@
+/* src/styles/startScreen.css */
+
 .start-screen-container {
   display: flex;
   flex-direction: column;
@@ -5,18 +7,22 @@
   align-items: center;
   height: 100vh; /* 画面全体の高さ */
   width: 100%;
-  background-color: #282c34; /* ダークテーマの背景色 */
-  color: white;
+  background-color: #253045; /* 背景色をオフホワイトの単色に (App.cssと合わせるか、ここで指定) */
+  color: #242424; /* 全体の文字色をダークグレーに */
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
 .title {
   font-size: 6rem; /* タイトル文字の大きさ */
-  font-weight: bold;
+  font-weight: 900; /* より太く */
   margin-bottom: 4rem; /* ボタンとの余白 */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  /* 文字に少し立体感や輝きを与えるエフェクト */
-  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #007bff, 0 0 40px #007bff;
+  font-family: 'Montserrat', sans-serif; /* モダンなフォント (要インポート) */
+  color: #FFCD38; /* タイトル文字色をソリッドな黄色に */
+  letter-spacing: 0.05em; /* 文字間隔を少し開ける */
+  /* グラデーション、text-shadow、background-clip、アニメーションを全て削除 */
 }
+
 
 .button-container {
   display: flex;
@@ -24,18 +30,27 @@
 }
 
 .nav-button {
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
+  padding: 1rem 2.5rem; /* パディングを少し広げる */
+  font-size: 1.3rem; /* 文字サイズを少し大きく */
   font-weight: bold;
-  color: white;
-  background-color: #007bff; /* ボタンの色 */
+  color: #242424; /* ボタン内の文字色をダークに */
+  background-color: #FFCD38; /* ボタンの色をソリッドな黄色に */
   border: none;
-  border-radius: 8px; /* ボタンの角を丸くする */
+  border-radius: 50px; /* ボタンの角をより丸く (ピル型) */
   cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transition: all 0.2s ease; /* transitionをスムーズに */
+  text-decoration: none; /* Linkの標準下線を消す */
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1); /* 軽い影で立体感を維持 */
 }
 
 .nav-button:hover {
-  background-color: #0056b3; /* ホバー時の色 */
-  transform: scale(1.05); /* ホバー時に少し大きくする */
+  background-color: #FFE79E; /* ホバー時の色を明るい黄色に */
+  transform: translateY(-2px); /* ホバー時に少し浮き上がらせる */
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15); /* ホバー時の影を少し濃くする */
+  color: #242424; /* ホバー時も文字色を維持 */
+}
+
+.nav-button:active {
+  transform: translateY(1px); /* クリック時に少し沈む */
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
 }
