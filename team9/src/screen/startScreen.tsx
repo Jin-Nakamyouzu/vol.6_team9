@@ -4,7 +4,7 @@ import "./cssByScreen/startScreen.css";
 
 const StartScreen: React.FC = () => {
     return (
-        <>
+        <div className="screen-container">
             <h1 className="title">Style Bender</h1>
             <div className="operation">
                 <Link to="./viewCards.tsx" classNameName="content">
@@ -20,7 +20,7 @@ const StartScreen: React.FC = () => {
                     </p>
                 </Link>
             </div>
-        </>
+        </div>
     );
 };
 
