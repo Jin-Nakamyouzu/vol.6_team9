@@ -1,10 +1,13 @@
 import React from "react";
 <<<<<<< HEAD
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
 =======
 import { Link, useNavigate } from "react-router-dom";
 import { useStageStore } from "../lib/stageStore";
 >>>>>>> c0b139cb50e422796e88275b2ba42566475cbea5
+=======
+>>>>>>> 189cee9b6864bf6b5546e415a6ddf3d3a50499ab
 import "./cssByScreen/selectStage.css";
 import "../App.css";
 
